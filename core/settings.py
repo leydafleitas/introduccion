@@ -1,12 +1,17 @@
 from pathlib import Path
+import os
+import environ
+
+env = environ.Env() #para poder crear nosotros las variables
+environ.Env.read_env() #Para poder leer las variables
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-l6$zq##fd2)d1lpomdvq0#4pc72!ak6qzg33gtx8rn74ymw6sh'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] #La estrellita significa todo
 
 # Application definition
 
@@ -17,6 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'core',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -34,7 +42,8 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #con basedir estamos apuntando a el folder introduccion y con templates le decimos que folder buscar
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -46,6 +55,7 @@ TEMPLATES = [
     },
 ]
 
+#wsgi se usa al final cuando ya despegamos, para que el sitio funcione
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
