@@ -6,8 +6,9 @@ from .models import Post
 # Create your views here.
 class BlogListView(View):
     def get(self, request, *args, **kwargs):
+        posts = Post.objects.all()
         context={
-
+            'posts':posts
         }
         return render(request, 'blog_list.html', context)
     
