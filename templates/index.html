@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<div class="min-h-screen flex items-center  justify-center bg-gray-50">
+    <div class="text-center">
+
+        <p class="text-2xl font-semibold text-gray-700">
+            Hola, visitá mi
+            <a 
+                href="{% url "blog:home" %}" class="text-blue-600 font-medium hover:underline">
+                blog aquí
+            </a>
+        </p>
+    </div>
+</div>
+{% endblock content %}

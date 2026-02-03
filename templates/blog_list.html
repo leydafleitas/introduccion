@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="max-w-3xl mx-auto px-4 pt-10">
+
+        <!-- Título -->
+        <h1 class="text-4xl font-bold text-gray-800 tracking-tight flex items-center justify-center mb-8">
+            Blog list
+        </h1>
+
+        <!-- Lista de posts -->
+        <div class="space-y-4">
+            {% for post in posts %}
+                <div class="flex items-center justify-between rounded-md bg-white p-4 shadow-sm ring-1 ring-gray-100">
+
+                    <!-- Título del post-->
+                    <a href="{% url "blog:detail" post.id %}" class="text-gray-900 font-medium hover:underline">
+                        {{post.title}}
+                    </a>
+
+                    <!-- Acciones -->
+                    <div class="flex items-center gap-3 text-sm">
+                        <a href="{% url "blog:update" post.id%}" class="text-green-700 hover:underline">
+                            Update
+                        </a>
+
+                        <a href="{% url "blog:delete" post.id%}" class="text-red-600 hover:underline">
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Boton create -->
+        <div class="mt-8 text-center">
+            <a
+                href="{% url 'blog:create' %}"
+                class="inline-block
+                    text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700
+                    hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                    focus:ring-blue-300 font-medium rounded-md text-sm
+                    px-4 py-2.5"
+            >
+                Crear post
+            </a>
+        </div>
+    </div>
+{% endblock content %}
+
