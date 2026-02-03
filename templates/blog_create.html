@@ -38,7 +38,11 @@
                     </div>
 
                     <!-- Botón -->
-                    <div class="flex justify-end pt-2">
+                    <div class="flex justify-end gap-3 pt-2">
+                        <a href="{% url 'blog:home' %}"
+                            class="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+                            Cancelar
+                        </a>
                         <button type="submit"
                         class="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 active:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200">
                             Crear post
