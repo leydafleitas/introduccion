@@ -1,7 +1,57 @@
-<form method="POST">
-{% csrf_token %}
-title{{form.title}}
-<br>
-content{{form.content}}
-<button type="submit">Update</button>
-</form>
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+        <div class="w-full max-w-2xl">
+
+            <!-- Tarjeta -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm">
+
+                <!-- Título -->
+                <div class="px-6 py-5 border-b border-slate-200">
+                    <h1 class="text-xl font-semibold text-slate-900">
+                        Editar post
+                    </h1>
+                    <p class="text-sm text-slate-500 mt-1">
+                        Actualizá el título y el contenido del post
+                    </p>
+                </div>
+
+                <!-- Form -->
+                <form method="POST" class="p-6 space-y-6">
+                    {% csrf_token %}
+
+                    <!-- Título -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-slate-700">
+                            Título
+                        </label>
+                        {{ form.title }}
+                    </div>
+
+                    <!-- Contenido -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-slate-700">
+                            Contenido
+                        </label>
+                        {{ form.content }}
+                    </div>
+
+                    <!-- Acciones -->
+                    <div class="flex justify-end pt-2">
+                        <button type="submit"
+                            class="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white
+                                shadow-sm hover:bg-indigo-500 active:bg-indigo-700
+                                focus:outline-none focus:ring-4 focus:ring-indigo-200">
+                            Update
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+

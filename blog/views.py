@@ -50,7 +50,7 @@ class BlogDetailView(View):
 
 class BlogUpdateView(UpdateView):
     model=Post
-    fields=['title','content']
+    form_class = PostCreateForm
     template_name='blog_update.html'
 
     def get_success_url(self):
